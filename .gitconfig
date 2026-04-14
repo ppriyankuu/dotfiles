@@ -1,0 +1,9 @@
+[user]
+	name = Priyanku Gogoi
+	email = workwithpriyanku@gmail.com
+[core]
+	editor = vim
+[color]
+	ui = true
+[oh-my-zsh]
+	hide-dirty = 1
