@@ -1,12 +1,29 @@
 # -------------------------------
-# Oh My Zsh Configuration (Core)
+# Zsh Core Setup
 # -------------------------------
-export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="robbyrussell"
-plugins=(git)
 
-# Load Oh My Zsh once (don’t reload every command)
-source "$ZSH/oh-my-zsh.sh"
+# Enable completion system (once, with cache)
+autoload -Uz compinit
+compinit -C
+
+# Case-insensitive tab completion
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+
+# -------------------------------
+# Prompt (Minimal + Colored)
+# -------------------------------
+autoload -Uz colors && colors
+autoload -Uz vcs_info
+
+precmd() { vcs_info }
+zstyle ':vcs_info:git:*' formats ' (%b)'
+
+setopt PROMPT_SUBST
+PROMPT='%F{cyan}%1~%f%F{magenta}${vcs_info_msg_0_}%f %F{yellow}\$%f '
+
+# Better completion behavior
+zstyle ':completion:*' menu select
+zstyle ':completion:*' rehash true
 
 # -------------------------------
 # Fast PATH Management
@@ -37,15 +54,14 @@ export GOPATH="/usr/local/go-workspace"
 load_gvm() {
   unset -f gvm go
   [ -s "$HOME/.gvm/scripts/gvm" ] && source "$HOME/.gvm/scripts/gvm"
+
+  # FIX: Moved inside load_gvm so go is available after gvm sources
+  export GOROOT="$(go env GOROOT 2>/dev/null || echo /usr/local/go)"
+  path_add "$GOROOT/bin"
 }
 gvm() { load_gvm; gvm "$@"; }
 go()  { load_gvm; go "$@"; }
 
-# Add static Go paths (these don’t slow startup)
-if command -v go >/dev/null 2>&1; then
-  export GOROOT="$(go env GOROOT 2>/dev/null || echo /usr/local/go)"
-  path_add "$GOROOT/bin"
-fi
 path_add "$GOPATH/bin"
 
 # -------------------------------
@@ -71,16 +87,13 @@ npx()  { load_nvm; npx "$@"; }
 tsc()  { load_nvm; tsc "$@"; }
 
 # -------------------------------
-# Zsh Completion Optimization
-# -------------------------------
-autoload -Uz compinit
-compinit -C  # Uses cache for faster startup
-zstyle ':completion:*' rehash true
-
-# -------------------------------
 # History Settings
 # -------------------------------
-HISTCONTROL=ignoreboth
+# FIX: Replaced bash-only HISTCONTROL with proper zsh history config
+HISTSIZE=10000
+SAVEHIST=10000
+HISTFILE=~/.zsh_history
+setopt HIST_IGNORE_DUPS HIST_IGNORE_SPACE SHARE_HISTORY
 
 # -------------------------------
 # Wi-Fi Aliases
@@ -88,7 +101,10 @@ HISTCONTROL=ignoreboth
 alias wifion="nmcli radio wifi on"
 alias wificonnect="nmcli device wifi connect CMF"
 
-# bun completions
-[ -s "/home/ppriyankuu/.bun/_bun" ] && source "/home/ppriyankuu/.bun/_bun"
-
 . "$HOME/.local/bin/env"
+
+# -------------------------------
+# Plugins
+# -------------------------------
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
