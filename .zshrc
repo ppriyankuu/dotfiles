@@ -111,5 +111,4 @@ alias ll='ls -lah --color=auto'
 # -------------------------------
 # Plugins
 # -------------------------------
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
