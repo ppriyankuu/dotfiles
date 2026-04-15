@@ -89,7 +89,6 @@ tsc()  { load_nvm; tsc "$@"; }
 # -------------------------------
 # History Settings
 # -------------------------------
-# FIX: Replaced bash-only HISTCONTROL with proper zsh history config
 HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.zsh_history
@@ -100,6 +99,12 @@ setopt HIST_IGNORE_DUPS HIST_IGNORE_SPACE SHARE_HISTORY
 # -------------------------------
 alias wifion="nmcli radio wifi on"
 alias wificonnect="nmcli device wifi connect CMF"
+
+# -------------------------------
+# Aliases
+# -------------------------------
+alias ls='ls --color=auto'
+alias ll='ls -lah --color=auto'
 
 . "$HOME/.local/bin/env"
 
