@@ -7,3 +7,5 @@
 	ui = true
 [oh-my-zsh]
 	hide-dirty = 1
+[init]
+	defaultBranch = main
