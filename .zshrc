@@ -101,6 +101,11 @@ alias wifion="nmcli radio wifi on"
 alias wificonnect="nmcli device wifi connect CMF"
 
 # -------------------------------
+# Wi-Fi Aliases
+# -------------------------------
+alias vault="go run main.go"
+
+# -------------------------------
 # Aliases
 # -------------------------------
 alias ls='ls --color=auto'
