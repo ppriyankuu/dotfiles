@@ -98,7 +98,7 @@ setopt HIST_IGNORE_DUPS HIST_IGNORE_SPACE SHARE_HISTORY
 # Wi-Fi Aliases
 # -------------------------------
 alias wifion="nmcli radio wifi on"
-alias wificonnect="nmcli device wifi connect CMF"
+alias wificonnect="nmcli device wifi connect"
 
 # -------------------------------
 # Wi-Fi Aliases
@@ -117,3 +117,11 @@ alias ll='ls -lah --color=auto'
 # Plugins
 # -------------------------------
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# opencode
+export PATH=/home/ppriyankuu/.opencode/bin:$PATH
+
+
+# Added by Antigravity CLI installer
+export PATH="/home/ppriyankuu/.local/bin:$PATH"
+bindkey "^[[3;3~" kill-word
