@@ -8,6 +8,8 @@ set number
 set relativenumber
 syntax on
 
+set termguicolors
+
 highlight Statement ctermfg=172 guifg=#d68044
 highlight String ctermfg=114 guifg=#68D450
 
