@@ -1,6 +1,7 @@
 call plug#begin('~/.vim/plugged')
   Plug 'jiangmiao/auto-pairs'
-  Plug 'morhetz/gruvbox'   " Only this plugin needed
+  Plug 'morhetz/gruvbox' 
+  Plug 'tpope/vim-surround'
 call plug#end()
 
 set number
