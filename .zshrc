@@ -125,3 +125,5 @@ export PATH=/home/ppriyankuu/.opencode/bin:$PATH
 # Added by Antigravity CLI installer
 export PATH="/home/ppriyankuu/.local/bin:$PATH"
 bindkey "^[[3;3~" kill-word
+
+export PATH="/usr/bin:/bin:$PATH"
